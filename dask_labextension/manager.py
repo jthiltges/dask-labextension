@@ -39,7 +39,7 @@ async def make_cluster(configuration: dict) -> Cluster:
 
     adaptive = None
     if configuration.get("adapt"):
-        adaptive = cluster.adapt(**configuration.get("adapt"))
+        adaptive = await cluster.adapt(**configuration.get("adapt"))
     elif configuration.get("workers") is not None:
         t = cluster.scale(configuration.get("workers"))
         if isawaitable(t):
